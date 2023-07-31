@@ -49,37 +49,30 @@ enum Options {
     }
   }
   
+let updateScores = () =>{
+  let div= document.querySelector('div');
+  div.textContent = `
+  Player Score:${playerScore}
+  Computer Score:${computerScore}
+  `
+}
+
+
   let game = () => {
-    for (let i = 0; i < 5; i++) {
-      let playerChoice;
-      const computerChoice = getComputerChoice();
-      playerChoice = prompt("Your choice (rock, paper, or scissors)").toLowerCase();
-      alert(playRound(playerChoice, computerChoice));
-  
-      // Display scores during the game
-      console.log("Player Score:", playerScore);
-      console.log("Computer Score:", computerScore);
-    }
-  
-    // Display final scores after the game
-    console.log("Final Player Score:", playerScore);
-    console.log("Final Computer Score:", computerScore);
-  
-    if (playerScore > computerScore) {
-      alert("You won the game");
-    } else if (playerScore === computerScore) {
-      alert("It's a tie");
-    } else {
-      alert("You lost the game");
-    }
+
+   let buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.addEventListener('click',()=> {
+     let playerChoice=button.textContent;
+     let computerChoice = getComputerChoice();
+     let result = playRound(playerChoice,computerChoice);
+     alert(result);
+    updateScores();
+    }));
+
+    
   };
   
+
   game();
   
   
-
- 
- 
-  
-
- 
