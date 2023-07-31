@@ -1,4 +1,5 @@
 var playerScore = 0, computerScore = 0;
+var result;
 var Options;
 (function (Options) {
     Options["Rock"] = "rock";
@@ -36,7 +37,7 @@ var playRound = function (playerSelection, computerSelection) {
 };
 var updateScores = function () {
     var div = document.querySelector('div');
-    div.textContent = "\n  Player Score:" + playerScore + "\n  Computer Score:" + computerScore + "\n  ";
+    div.textContent = "\n  Result for the hand: " + result + "\n\n\n\n  Player Score: " + playerScore + "\n  Computer Score: " + computerScore + "\n  \n  ";
 };
 var game = function () {
     var buttons = document.querySelectorAll('button');
@@ -44,8 +45,13 @@ var game = function () {
     buttons.forEach(function (button) { return button.addEventListener('click', function () {
         var playerChoice = button.textContent;
         var computerChoice = getComputerChoice();
-        var result = playRound(playerChoice, computerChoice);
-        alert(result);
+        result = playRound(playerChoice, computerChoice);
+        if (playerScore === 5 || computerScore === 5) {
+            if (playerScore > computerScore)
+                return alert('player won the game');
+            else
+                alert('computer won the game');
+        }
         updateScores();
     }); });
 };

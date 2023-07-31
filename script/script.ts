@@ -1,6 +1,8 @@
 let playerScore = 0,
     computerScore = 0;
 
+let result;
+
 enum Options {
     Rock = "rock",
     Paper = "paper",
@@ -51,23 +53,35 @@ let playRound=(playerSelection,computerSelection)=>{
   }
 };
   
-let updateScores = () =>{
-  let div= document.querySelector('div');
+let updateScores = () => {
+  let div = document.querySelector('div');
   div.textContent = `
-  Player Score:${playerScore}
-  Computer Score:${computerScore}
-  `
+  Result for the hand: ${result}\n\n
+
+  Player Score: ${playerScore}
+  Computer Score: ${computerScore}
+  
+  `;
 }
 
 
 const game = () => {
+
+
+
   let buttons = document.querySelectorAll('button');
   console.log(buttons)
   buttons.forEach(button => button.addEventListener('click',()=> {
     let playerChoice=button.textContent;
     let computerChoice = getComputerChoice();
-    let result = playRound(playerChoice,computerChoice);
-    alert(result);
+    result = playRound(playerChoice,computerChoice);
+    
+    if (playerScore===5||computerScore===5)
+ {
+  if(playerScore>computerScore)
+  return alert('player won the game')
+  else alert('computer won the game')
+}
     updateScores();
   }));
 
