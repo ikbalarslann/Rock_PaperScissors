@@ -40,6 +40,7 @@ var updateScores = function () {
 };
 var game = function () {
     var buttons = document.querySelectorAll('button');
+    console.log(buttons);
     buttons.forEach(function (button) { return button.addEventListener('click', function () {
         var playerChoice = button.textContent;
         var computerChoice = getComputerChoice();
