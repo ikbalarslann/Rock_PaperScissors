@@ -1,7 +1,9 @@
-let playerScore = 0,
-    computerScore = 0;
+let _playerScore = 0,
+    _computerScore = 0;
 
-let result;
+let _result;
+let _resultHand;
+let _description;
 
 enum Options {
     Rock = "rock",
@@ -20,48 +22,73 @@ let playRound=(playerSelection,computerSelection)=>{
   switch(true){
     case 
     playerSelection===Options.Rock&&computerSelection===Options.Scissors:
-    playerScore++;
-      return`You win! Rock beats Scissors`;
+    
+    _resultHand="You win!";
+    _description=`Rock beats Scissors`
+    _playerScore++;
+      return ;
     
     case
       playerSelection===Options.Rock&&computerSelection===Options.Paper:
-      computerScore++;
-      return "You Lose! Paper beats Rock";
+      
+      _resultHand="You Lose!";
+      _description="Paper beats Rock"
+      _computerScore++;
+      return ;
       
     case
       playerSelection===Options.Paper&&computerSelection===Options.Rock:
-      playerScore++;
-      return  "You Win! Paper beats Rock";
+     
+      _resultHand="You win!";
+      _description="Paper beats Rock"
+      _playerScore++;
+      return  ;
         
     case
       playerSelection===Options.Paper&&computerSelection===Options.Scissors:
-      computerScore++;  
-      return "You Lose! Scissors beats Paper";
+     
+      _resultHand="You Lose!";
+      _description="Scissors beats Paper"
+      _computerScore++;
+      return ;
         
     case
       playerSelection===Options.Scissors&&computerSelection===Options.Paper:
-      playerScore++;  
-      return "You Win! Scissors beats Paper";
+     
+      _resultHand="You win!";
+      _description="Scissors beats Paper"
+      _playerScore++;
+      return ;
         
     case
       playerSelection===Options.Scissors&&computerSelection===Options.Rock:
-      computerScore++; 
-      return  "You Lose! Paper beats Rock ";
+      
+      _resultHand="You Lose!";
+      _description="Paper beats Rock "
+      _computerScore++;
+      return  ;
         
     default:
-      return "you both equal play again";             
+      _resultHand="You Both Equal"
+      _description="Play Again"
+      return ;             
   }
 };
   
 let updateScores = () => {
-  let div = document.querySelector('div');
-  div.textContent = `
-  Result for the hand: ${result}\n\n
+  let result_hand = document.querySelector('.result');
+  let desctription = document.querySelector('.description');
 
-  Player Score: ${playerScore}
-  Computer Score: ${computerScore}
+  let pScore=document.querySelector('.PScore');
+  let cScore=document.querySelector('.CScore');
+
+  result_hand.textContent=`${_resultHand}`
+  desctription.textContent=`${_description}`
+
+  pScore.textContent=`Player Score: ${_playerScore}`
+  cScore.textContent=`Computer Score: ${_computerScore}`
+
   
-  `;
 }
 
 
@@ -74,13 +101,14 @@ const game = () => {
   buttons.forEach(button => button.addEventListener('click',()=> {
     let playerChoice=button.textContent;
     let computerChoice = getComputerChoice();
-    result = playRound(playerChoice,computerChoice);
+    _result = playRound(playerChoice,computerChoice);
     
-    if (playerScore===5||computerScore===5)
+    if (_playerScore===5||_computerScore===5)
  {
-  if(playerScore>computerScore)
+  if(_playerScore>_computerScore)
   return alert('player won the game')
-  else alert('computer won the game')
+  else 
+  return alert('computer won the game')
 }
     updateScores();
   }));
