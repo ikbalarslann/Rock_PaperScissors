@@ -123,9 +123,6 @@ let updateScores = () => {
 
 
 const game = () => {
-
-
-
   let buttons = document.querySelectorAll('button');
   console.log(buttons)
   buttons.forEach(button => button.addEventListener('click',()=> {
