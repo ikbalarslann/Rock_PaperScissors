@@ -11,6 +11,19 @@ body{
     align-items: center;
     background-color: rgb(53, 53, 53);
 }
+.Scores{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.player, .computer {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .head{
     margin-bottom: auto;
     color:rgb(16, 6, 6);
@@ -24,4 +37,9 @@ body{
     width: 100%;
     text-align: center;
     font-size: 6px;
+}
+
+img{
+    width: 100px;
+    height: 100px;
 }

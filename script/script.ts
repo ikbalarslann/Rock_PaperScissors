@@ -11,6 +11,13 @@ enum Options {
     Scissors = "scissors",
 }
 
+enum Images{
+  Rock="https://www.rpsgame.org/assets/img/rock.svg",
+  Paper="https://www.rpsgame.org/assets/img/paper.svg",
+  Scissors="https://www.rpsgame.org/assets/img/scissors.svg"
+}
+
+
 let getComputerChoice = () => {
   const values = Object.values(Options);
   return values[Math.floor(Math.random() * values.length)];
@@ -18,11 +25,19 @@ let getComputerChoice = () => {
 
 let playRound=(playerSelection,computerSelection)=>{
   playerSelection=playerSelection.toLowerCase();
+  
+  let playerImage=document.querySelector('.pImage')as HTMLImageElement;
+  let computerImage=document.querySelector('.cImage')as HTMLImageElement;
+
+
 
   switch(true){
     case 
     playerSelection===Options.Rock&&computerSelection===Options.Scissors:
     
+    playerImage.src=Images.Rock;
+    computerImage.src=Images.Scissors;
+
     _resultHand="You win!";
     _description=`Rock beats Scissors`
     _playerScore++;
@@ -30,6 +45,9 @@ let playRound=(playerSelection,computerSelection)=>{
     
     case
       playerSelection===Options.Rock&&computerSelection===Options.Paper:
+
+      playerImage.src=Images.Rock;
+      computerImage.src=Images.Paper;
       
       _resultHand="You Lose!";
       _description="Paper beats Rock"
@@ -39,6 +57,9 @@ let playRound=(playerSelection,computerSelection)=>{
     case
       playerSelection===Options.Paper&&computerSelection===Options.Rock:
      
+      playerImage.src=Images.Paper;
+      computerImage.src=Images.Rock;
+
       _resultHand="You win!";
       _description="Paper beats Rock"
       _playerScore++;
@@ -46,6 +67,9 @@ let playRound=(playerSelection,computerSelection)=>{
         
     case
       playerSelection===Options.Paper&&computerSelection===Options.Scissors:
+
+      playerImage.src=Images.Paper;
+      computerImage.src=Images.Scissors;
      
       _resultHand="You Lose!";
       _description="Scissors beats Paper"
@@ -54,6 +78,9 @@ let playRound=(playerSelection,computerSelection)=>{
         
     case
       playerSelection===Options.Scissors&&computerSelection===Options.Paper:
+
+      playerImage.src=Images.Scissors;
+      computerImage.src=Images.Paper;
      
       _resultHand="You win!";
       _description="Scissors beats Paper"
@@ -62,6 +89,9 @@ let playRound=(playerSelection,computerSelection)=>{
         
     case
       playerSelection===Options.Scissors&&computerSelection===Options.Rock:
+
+      playerImage.src=Images.Scissors;
+      computerImage.src=Images.Rock;
       
       _resultHand="You Lose!";
       _description="Paper beats Rock "
